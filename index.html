@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <button onclick="startstop()">button</button>
     <script type="text/javascript" src="voice-commands.js"></script>
 
     <script>
@@ -21,9 +22,11 @@
             }
             results.push(result);
         });
-        SPEECH.start({
-            min_confidence: 0.2,
-        });
+        const startstop = () => {
+            SPEECH.start({
+                min_confidence: 0.2,
+            });
+        };
     </script>
 </body>
 
