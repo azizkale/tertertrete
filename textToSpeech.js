@@ -48,7 +48,7 @@
 // }
 // }
 
-const myFunc = (textfromchatgpt) => {
+const text_to_speech = (textfromchatgpt) => {
     if ('speechSynthesis' in window) {
         var msg = new SpeechSynthesisUtterance();
         var voices = window.speechSynthesis.getVoices();
