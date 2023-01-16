@@ -1,3 +1,4 @@
+//Convert user's voice message into text message
 const speaknow = async() => {
     navigator.mediaDevices
         .getUserMedia({
@@ -35,8 +36,9 @@ const speaknow = async() => {
                     await mediaRecorder.stop();
 
                     //   ==================
-                    sendRequest(transcript);
-                    //   ==================
+                    await sendMessageToScreen(transcript)
+                        // sendRequest(transcript);
+                        //   ==================
                 }
             };
 

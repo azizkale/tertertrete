@@ -6,10 +6,10 @@ const sendRequest = async(transcript) => {
             },
             body: JSON.stringify({
                 query: `
-    query Chat($question: String) {
-        chat(question: $question)
-      }
-`,
+                    query Chat($question: String) {
+                        chat(question: $question)
+                    }
+                `,
                 variables: {
                     question: transcript,
                 },
