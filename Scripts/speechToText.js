@@ -1,4 +1,6 @@
 //Convert user's voice message into text message
+let mediaRecorder;
+
 const speaknow = async() => {
     navigator.mediaDevices
         .getUserMedia({
@@ -10,7 +12,7 @@ const speaknow = async() => {
             });
             if (!MediaRecorder.isTypeSupported("audio/webm"))
                 return alert("Browser not supported");
-            const mediaRecorder = new MediaRecorder(stream, {
+            mediaRecorder = new MediaRecorder(stream, {
                 mimeType: "audio/webm",
             });
             const socket = new WebSocket(
@@ -34,12 +36,12 @@ const speaknow = async() => {
                 if (transcript && received.is_final) {
                     //   ==================
                     console.log(transcript)
-                    sendMessageToScreen(transcript)
-                    document.getElementById('id').innerText = transcript;
-                    // await sendRequestToChatGPT(transcript);
-                    // await socket.close();
-                    // await mediaRecorder.stop();
+                    await sendMessageToScreen(transcript, "left")
+                    await sendRequestToChatGPT(transcript);
+                    await socket.close();
+                    await mediaRecorder.stop();
                     //   ==================
+
                 }
             };
 
@@ -56,4 +58,10 @@ const speaknow = async() => {
                 });
             };
         });
+
+    //hides start-button, displays stop-button
+    document.getElementById('start').style.display = 'none';
+    document.getElementById('stop').style.display = 'block';
+    //colors the button
+    document.getElementById('btnSend').style.backgroundColor = 'red';
 };

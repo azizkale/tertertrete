@@ -11,7 +11,7 @@ const text_to_speech = async(textfromchatgpt) => {
         await speechSynthesis.speak(msg);
 
         msg.text = await textfromchatgpt;
-        await sendMessageToScreen(textfromchatgpt);
+        await sendMessageToScreen(textfromchatgpt, "right");
         await window.speechSynthesis.speak(msg);
 
     } else {
@@ -22,10 +22,11 @@ const text_to_speech = async(textfromchatgpt) => {
 }
 
 const stopSpeaking = () => {
+    //stops speaking
     window.speechSynthesis.cancel();
-    document.getElementById('start').style.display = 'none'
+    //hides stop-button, displays start-button
+    document.getElementById('start').style.display = 'block';
+    document.getElementById('stop').style.display = 'none';
+    //colors the button
+    document.getElementById('btnSend').style.backgroundColor = '#a3d063'
 }
-
-window.speechSynthesis.addEventListener('end', (event) => {
-    console.log(`Utterance has finished being spoken after ${event.elapsedTime} seconds.`);
-});

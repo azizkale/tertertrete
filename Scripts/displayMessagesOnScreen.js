@@ -1,4 +1,4 @@
-const sendMessageToScreen = (texttt) => {
+const sendMessageToScreen = (comingtext, messageside) => {
     var Message;
     Message = function(arg) {
         (this.text = arg.text), (this.message_side = arg.message_side);
@@ -9,7 +9,7 @@ const sendMessageToScreen = (texttt) => {
                 $message
                     .addClass(_this.message_side)
                     .find(".text")
-                    .html(texttt);
+                    .html(comingtext);
                 $(".messages").append($message);
                 return setTimeout(function() {
                     return $message.addClass("appeared");
@@ -24,7 +24,7 @@ const sendMessageToScreen = (texttt) => {
         getMessageText = function() {
             var $message_input;
             $message_input = $(".message_input");
-            return texttt;
+            return comingtext;
         };
         sendMessage = function(text) {
             var $messages, message;
@@ -33,10 +33,10 @@ const sendMessageToScreen = (texttt) => {
             }
             $(".message_input").val("");
             $messages = $(".messages");
-            message_side = message_side === "left" ? "right" : "left";
+            // message_side = message_side === "left" ? "right" : "left";
             message = new Message({
-                text: texttt,
-                message_side: message_side,
+                text: comingtext,
+                message_side: messageside,
             });
             message.draw();
             return $messages.animate({
@@ -45,15 +45,7 @@ const sendMessageToScreen = (texttt) => {
                 300
             );
         };
-        // $(".send_message").click(function(e) {
         sendMessage(getMessageText());
-        // });
-        // $(".message_input").keyup(function(e) {
-        //     if (e.which === 13) {
-        //         console.log("b");
-        //         return sendMessage(getMessageText());
-        //     }
-        // });
 
     });
 
