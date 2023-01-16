@@ -18,7 +18,7 @@
       kousmak icin her cevaptan sonra tekrar basiniz
     </button> -->
     <div class="container chat_window">
-        <div class="row top_menu">
+        <div class="top_menu">
             <div class="buttons">
                 <div class="button close"></div>
                 <div class="button minimize"></div>
@@ -26,15 +26,21 @@
             </div>
             <div class="title">Chat</div>
         </div>
-        <ul class="messages" id="messages"></ul>
-        <div class="bottom_wrapper clearfix">
-            <div class="message_input_wrapper">
+        <ul class="messages" id="messages">
+            <div id="id"></div>
+        </ul>
+        <div class="bottom_wrapper text-center">
+            <!-- <div class="message_input_wrapper">
                 <input class="message_input" placeholder="Type your message here..." />
-            </div>
-            <div class="send_message" onclick="speaknow()">
+            </div> -->
+            <div id="start" class="send_message" onclick="speaknow()">
                 <div class="icon"></div>
-                <div class="text">Send</div>
+                <div class="text">Record</div>
             </div>
+            <!-- <div class="send_message" id="stop" onclick="stopSpeaking()">
+                <div class="icon"></div>
+                <div class="text">Stop</div>
+            </div> -->
         </div>
     </div>
     <div class="message_template">

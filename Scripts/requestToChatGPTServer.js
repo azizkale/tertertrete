@@ -1,4 +1,4 @@
-const sendRequest = async(transcript) => {
+const sendRequestToChatGPT = async(transcript) => {
     await fetch("https://sore-gilet-bass.cyclic.app/", {
             method: "POST",
             headers: {

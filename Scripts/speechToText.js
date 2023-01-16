@@ -32,13 +32,14 @@ const speaknow = async() => {
                 const received = JSON.parse(message.data);
                 const transcript = received.channel.alternatives[0].transcript;
                 if (transcript && received.is_final) {
-                    console.log(transcript);
-                    await mediaRecorder.stop();
-
                     //   ==================
-                    await sendMessageToScreen(transcript)
-                        // sendRequest(transcript);
-                        //   ==================
+                    console.log(transcript)
+                    sendMessageToScreen(transcript)
+                    document.getElementById('id').innerText = transcript;
+                    // await sendRequestToChatGPT(transcript);
+                    // await socket.close();
+                    // await mediaRecorder.stop();
+                    //   ==================
                 }
             };
 
