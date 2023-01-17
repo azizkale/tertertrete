@@ -1,0 +1,12 @@
+{
+    "name": "voice-command",
+    "version": "1.0.0",
+    "description": "",
+    "main": "config.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "live-server"
+    },
+    "author": "azizkale",
+    "license": "ISC"
+}
