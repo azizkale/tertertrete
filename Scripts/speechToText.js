@@ -16,7 +16,7 @@ const speaknow = async() => {
                 mimeType: "audio/webm",
             });
             const socket = new WebSocket(
-                "wss://api.deepgram.com/v1/listen?language=tr", ["token", "79c607c5513cd211a99ca6d04fc927b52480f84f"]
+                "wss://api.deepgram.com/v1/listen?language=tr", ["token", config.TOKEN_DEEPGRAM]
             );
             socket.onopen = () => {
                 console.log({
