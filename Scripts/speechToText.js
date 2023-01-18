@@ -37,9 +37,9 @@ const speaknow = async() => {
                     //   ==================
                     console.log(transcript)
                     await sendMessageToScreen(transcript, "left")
+                    await mediaRecorder.stop();
                     await sendRequestToChatGPT(transcript);
                     await socket.close();
-                    await mediaRecorder.stop();
                     //   ==================
 
                 }
