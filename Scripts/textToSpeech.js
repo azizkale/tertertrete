@@ -1,4 +1,18 @@
 //convert ChatGPT's text message into speech
+let counter;
+document.getElementById('touch').ontouchstart = function(eve) {
+    let count = 0;
+    counter = setInterval(function() {
+        console.log(count);
+        count++;
+    }, 500);
+}
+
+document.getElementById('touch').ontouchend = function(eve) {
+    clearInterval(counter);
+    console.log("ya safii")
+}
+
 const text_to_speech = async(textfromchatgpt) => {
 
     return new Promise(async(resolve, reject) => {
