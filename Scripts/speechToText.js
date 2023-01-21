@@ -1,32 +1,126 @@
 //Convert user's voice message into text message
-document.getElementById('touch').ontouchstart = function(eve) {
-    console.log("ya sabr");
+
+let btnRecord = document.querySelector("#btnRecord");
+
+// let pressHoldEvent = new CustomEvent("pressHold");
+
+// Listening for the mouse and touch events    
+btnRecord.addEventListener("mousedown", pressingDown, false);
+btnRecord.addEventListener("touchstart", pressingDown, false);
+btnRecord.addEventListener("mouseup", notPressingDown, false);
+btnRecord.addEventListener("mouseleave", notPressingDown, false);
+btnRecord.addEventListener("touchend", notPressingDown, false);
+
+
+
+// Listening for our custom pressHold event
+// btnRecord.addEventListener("pressHold", doSomething, false);
+
+// btnRecord.ontouchstart = function(eve) {
+//     console.log("ya sabr");
+//     SPEECH.onStart(function() {
+
+//     });
+//     SPEECH.onResult(function(result) {
+//         // $timeout(function() {
+//         //     if ($scope.step === 1) {
+//         //         $scope.name = result.transcript;
+//         //         $scope.step = 2;
+//         //     }
+//         //     $scope.results.push(result);
+//         // });
+//         document.getElementById("speechtotext").innerText = result.transcript;
+//         console.log(result.transcript)
+//     });
+//     SPEECH.start({
+//         min_confidence: 0.2,
+//     });
+// }
+
+// btnRecord.ontouchend = function() {
+//     SPEECH.stop();
+//     SPEECH.onStop(function() {
+//         sendMessageToScreen(document.getElementById("speechtotext").innerText, "left")
+//     });
+//     console.log("ya safii")
+// }
+
+
+let counter;
+
+function pressingDown(e) {
     SPEECH.onStart(function() {
 
     });
     SPEECH.onResult(function(result) {
-        // $timeout(function() {
-        //     if ($scope.step === 1) {
-        //         $scope.name = result.transcript;
-        //         $scope.step = 2;
-        //     }
-        //     $scope.results.push(result);
-        // });
+
         document.getElementById("speechtotext").innerText = result.transcript;
         console.log(result.transcript)
     });
     SPEECH.start({
         min_confidence: 0.2,
     });
+
+    console.log("Pressing!");
+    let count = 0;
+    counter = setInterval(function() {
+        console.log(count);
+        document.getElementById("speechtotext").innerText = count;
+        count++;
+    }, 500);
 }
 
-document.getElementById('touch').ontouchend = function(eve) {
+function notPressingDown(e) {
     SPEECH.stop();
-    SPEECH.onStop(function() {
-        sendMessageToScreen(document.getElementById("speechtotext").innerText, "left")
-    });
-    console.log("ya safii")
+    clearInterval(counter)
+        // SPEECH.onStop(function() {
+        //     sendMessageToScreen(document.getElementById("speechtotext").innerText, "left")
+        // });
+    document.querySelector("#delete-send-buttons").style.display = "block"
+
+    console.log("Not pressing!");
 }
+
+function doSomething(e) {
+
+    console.log("pressHold event fired!");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const speaknow = async() => {
     navigator.mediaDevices
         .getUserMedia({

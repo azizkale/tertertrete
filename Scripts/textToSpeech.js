@@ -50,10 +50,10 @@ const stopSpeaking = () => {
     //stops speaking
     window.speechSynthesis.cancel();
     //hides stop-button, displays start-button
-    document.getElementById('start').style.display = 'block';
-    document.getElementById('stop').style.display = 'none';
-    //colors the button
-    document.getElementById('btnSend').style.backgroundColor = '#a3d063'
+    // document.getElementById('start').style.display = 'block';
+    // document.getElementById('stop').style.display = 'none';
+    // //colors the button
+    // document.getElementById('btnSend').style.backgroundColor = '#a3d063'
 }
 
 // main();
