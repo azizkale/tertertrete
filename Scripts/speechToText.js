@@ -1,31 +1,30 @@
 //Convert user's voice message into text message
-let mediaRecorder;
 document.getElementById('touch').ontouchstart = function(eve) {
-    navigator.mediaDevices
-        .getUserMedia({
-            audio: true,
-        })
-        .then((stream) => {
-            console.log({
-                stream,
-            });
-            if (!MediaRecorder.isTypeSupported("audio/webm"))
-                return alert("Browser not supported");
-            mediaRecorder = new MediaRecorder(stream, {
-                mimeType: "audio/webm",
-            });
-            mediaRecorder.addEventListener("dataavailable", async(event) => {
-                if (event.data.size > 0) {
-                    sendMessageToScreen(transcript, "left")
+    console.log("ya sabr");
+    SPEECH.onStart(function() {
 
-                }
-            });
-            mediaRecorder.start(1000);
-        });
+    });
+    SPEECH.onResult(function(result) {
+        // $timeout(function() {
+        //     if ($scope.step === 1) {
+        //         $scope.name = result.transcript;
+        //         $scope.step = 2;
+        //     }
+        //     $scope.results.push(result);
+        // });
+        document.getElementById("speechtotext").innerText = result.transcript;
+        console.log(result.transcript)
+    });
+    SPEECH.start({
+        min_confidence: 0.2,
+    });
 }
 
 document.getElementById('touch').ontouchend = function(eve) {
-    mediaRecorder.stop();
+    SPEECH.stop();
+    SPEECH.onStop(function() {
+        sendMessageToScreen(document.getElementById("speechtotext").innerText, "left")
+    });
     console.log("ya safii")
 }
 const speaknow = async() => {

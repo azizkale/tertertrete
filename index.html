@@ -28,8 +28,8 @@
         </ul>
         <div class="bottom_wrapper text-center">
             <!-- <div class="message_input_wrapper">
-                <input class="message_input" placeholder="Type your message here..." />
-            </div> -->
+              <input class="message_input" placeholder="Type your message here..." />
+          </div> -->
             <button id="touch">SSSStart</button>
             <div id="btnSend" class="send_message">
                 <!-- <div class="icon"></div> -->
@@ -47,10 +47,17 @@
             </div>
         </li>
     </div>
+    </div>
+    <div style="position: absolute;top: 50%;left:50%">
+        <p id="speechtotext"></p>
+        <button class="send_message">delete</button>
+        <button class="send_message">send</button>
+    </div>
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <!-- own scripts-->
     <script src="./config.js"></script>
+    <script src="./Scripts/voice-commands.js"></script>
     <script src="./Scripts/requestToChatGPTServer.js"></script>
     <script src="./Scripts/textToSpeech.js"></script>
     <script src="./Scripts/speechToText.js"></script>
