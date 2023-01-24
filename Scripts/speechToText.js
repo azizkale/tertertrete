@@ -5,19 +5,19 @@ let btnRecord = document.querySelector("#btnRecord");
 
 // Listening for the mouse and touch events
 let counter;
-const start = () => {
+const start = async() => {
     let count = 0;
     counter = setInterval(() => {
         count++;
     }, 1000);
-    SPEECH.onStart(function() {
+    await SPEECH.onStart(function() {
 
     });
-    SPEECH.onResult(function(result) {
+    await SPEECH.onResult(function(result) {
         document.getElementById("speechtotext").innerText = result.transcript;
         console.log(result.transcript)
     });
-    SPEECH.start({
+    await SPEECH.start({
         min_confidence: 0.2,
     });
 }
