@@ -1,5 +1,5 @@
 const sendRequestToChatGPT = async(transcript) => {
-    await fetch(process.env.ChatGPT_SERVER_URL, {
+    await fetch("https://sore-gilet-bass.cyclic.app", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -11,7 +11,7 @@ const sendRequestToChatGPT = async(transcript) => {
                     }
                 `,
                 variables: {
-                    question: transcript,
+                    question: "merhaba",
                 },
             }),
         })
