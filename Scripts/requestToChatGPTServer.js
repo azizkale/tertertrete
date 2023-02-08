@@ -1,5 +1,5 @@
 const sendRequestToChatGPT = async(transcript) => {
-    await fetch(config.ChatGPT_SERVER_URL, {
+    await fetch(ChatGPT_SERVER_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
