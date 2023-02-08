@@ -1,6 +1,6 @@
 //Convert user's voice message into text message
 let mediaRecorder;
-
+let TOKEN_DEEPGRAM;
 const speaknow = async() => {
     navigator.mediaDevices
         .getUserMedia({
