@@ -1,0 +1,28 @@
+name: voice_chat_with_chatGPT
+
+on: [push]
+
+env:
+  ChatGPT_SERVER_URL: https://sore-gilet-bass.cyclic.app/
+  TOKEN_DEEPGRAM: 79c607c5513cd211a99ca6d04fc927b52480f84f
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Build
+        run: |
+          npm run build
