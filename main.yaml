@@ -1,10 +1,11 @@
-name: voice_chat_with_chatGPT
+name: Build Project
 
 on: [push]
 
 env:
-  ChatGPT_SERVER_URL: https://sore-gilet-bass.cyclic.app/
-  TOKEN_DEEPGRAM: 79c607c5513cd211a99ca6d04fc927b52480f84f
+  NODE_VERSION: 14
+  CHATGPT_SERVER_URL: ${{ secrets.CHATGPT_SERVER_URL }}
+  TOKEN_DEEPGRAM: ${{ secrets.TOKEN_DEEPGRAM }}
 
 jobs:
   build:
@@ -17,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
         run: |
@@ -25,4 +26,4 @@ jobs:
 
       - name: Build
         run: |
-          npm run build
+          CHATGPT_SERVER_URL=${CHATGPT_SERVER_URL} TOKEN_DEEPGRAM=${TOKEN_DEEPGRAM} npm run build
