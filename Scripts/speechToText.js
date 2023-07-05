@@ -21,12 +21,22 @@ const speaknow = async() => {
                 console.log({
                     event: "onopen",
                 });
+                mediaRecorder.start(1000);
                 mediaRecorder.addEventListener("dataavailable", async(event) => {
                     if (event.data.size > 0 && socket.readyState == 1) {
-                        socket.send(event.data);
+                        // socket.send(event.data);
+                        let result = event.data;
+                        SPEECH.start({
+                            min_confidence: 0.2,
+                        });
+                        SPEECH.onResult(function(result) {
+
+                            console.log(result.transcript)
+                            document.getElementById('sss').innerText = result.transcript
+                        });
                     }
                 });
-                mediaRecorder.start(1000);
+
             };
 
             socket.onmessage = async(message) => {
